@@ -7,4 +7,9 @@ def create_app():
     @app.route('/')
     def hello_world():
         return 'Hello world'
+    
+    from . import auth
+
+    app.register_blueprint(auth.auth_bp)
+
     return app
