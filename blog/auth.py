@@ -1,8 +1,27 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session, g
 from .db import get_db
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from functools import wraps
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+@auth_bp.before_app_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = get_db().execute(
+            'SELECT * FROM user WHERE id = ?', (user_id,)
+        ).fetchone()
+        print(g.user['username'])
+
+def login_required(func):
+    @wraps(func)
+    def wrapped_func(*args, **kwargs):
+        if g.user is None:
+            return redirect(url_for('auth.login'))
+        return func(*args, **kwargs)
+    return wrapped_func
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():

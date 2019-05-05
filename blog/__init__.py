@@ -22,9 +22,10 @@ def create_app():
     
     # blueprints
     from . import auth
-
+    from . import blog
     app.register_blueprint(auth.auth_bp)
-
+    app.register_blueprint(blog.blog_bp)
+    
     from . import db
     db.init_app(app)
 

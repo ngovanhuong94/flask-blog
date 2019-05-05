@@ -21,10 +21,16 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Blog</a>
                 </div>
-
+                {% if g.user %}
                 <div class="nav navbar-nav navbar-right">
+                    <li><a href="{{url_for('auth.login')}}">Login</a></li>
                     <li><a href="{{url_for('auth.register')}}">Register</a></li>
                 </div>
+                {% else %}
+                <div>
+                    <li><a href="/#">Create Post</a></li>
+                </div>
+                {% endif %}
             </div>
         </nav>
         
