@@ -7,7 +7,11 @@ blog_bp = Blueprint('blog', __name__, url_prefix='/')
 
 @blog_bp.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    db = get_db()
+    posts = db.execute(
+        'SELECT * FROM post ORDER BY created DESC'
+    ).fetchall()
+    return render_template('index.html', posts=posts)
 
 
 @blog_bp.route('/create', methods=['GET', 'POST'])
