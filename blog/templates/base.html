@@ -23,12 +23,13 @@
                 </div>
                 {% if g.user %}
                 <div class="nav navbar-nav navbar-right">
-                    <li><a href="{{url_for('auth.login')}}">Login</a></li>
-                    <li><a href="{{url_for('auth.register')}}">Register</a></li>
+                    <li><a href="/#">Create Post</a></li>
+                    <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
                 </div>
                 {% else %}
-                <div>
-                    <li><a href="/#">Create Post</a></li>
+                <div class="nav navbar-nav navbar-right">
+                    <li><a href="{{url_for('auth.login')}}">Login</a></li>
+                    <li><a href="{{url_for('auth.register')}}">Register</a></li>
                 </div>
                 {% endif %}
             </div>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}create post page{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form class="small-form" method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" id="title"/>
+            </div>
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea rows="10" cols="30" name="body" class="form-control" id="textarea"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+{% endblock %}

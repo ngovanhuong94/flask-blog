@@ -16,7 +16,7 @@ def create_app():
     except OSError:
         pass
     # test router
-    @app.route('/')
+    @app.route('/hello')
     def hello_world():
         return 'Hello world'
     

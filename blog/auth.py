@@ -83,7 +83,12 @@ def login():
             #save user id to session
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('hello_world'))
+            return redirect(url_for('blog.index'))
         # show error to client
         flash(error)
     return render_template('login.html')
+
+@auth_bp.route('/logout', methods=['GET'])
+def logout():
+    session.clear()
+    return redirect(url_for('auth.login'))
