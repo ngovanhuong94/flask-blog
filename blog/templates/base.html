@@ -23,7 +23,7 @@
                 </div>
                 {% if g.user %}
                 <div class="nav navbar-nav navbar-right">
-                    <li><a href="/#">Create Post</a></li>
+                    <li><a href="{{url_for('blog.create')}}">Create Post</a></li>
                     <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
                 </div>
                 {% else %}
