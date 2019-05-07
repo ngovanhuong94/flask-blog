@@ -15,6 +15,10 @@
                 <textarea rows="10" cols="30" name="body" class="form-control">{{post.body}}</textarea>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
+            <hr>
+        </form>
+        <form class="small-form" action="{{url_for('blog.delete', id=post['id'])}}" method="POST">
+            <button type="submit" class="btn btn-danger">Delete post</button>
         </form>
     </div>
 {% endblock %}
